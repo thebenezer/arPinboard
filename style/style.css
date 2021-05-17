@@ -260,7 +260,9 @@ footer{
   main section{
     flex-direction: column;
   }
-  
+  .more{
+    display: none;
+  }
   .trydemo{
     margin-top: 25%;
   }
