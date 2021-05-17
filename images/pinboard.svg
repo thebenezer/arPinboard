@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="regular"
+   enable-background="new 0 0 24 24"
+   height="512"
+   viewBox="0 0 24 24"
+   width="512"
+   version="1.1"
+   sodipodi:docname="pinboard.svg"
+   inkscape:version="1.0.2 (394de47547, 2021-03-26)">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="755"
+     inkscape:window-height="484"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="0.88867188"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="regular" />
+  <path
+     d="m7.885.057c-.28-.117-.604-.052-.818.163l-6.847 6.847c-.215.215-.279.537-.163.818.116.28.39.463.693.463h2.583l5.472 6.376v3.635c0 .669.81 1.001 1.28.53l3.326-3.326 9.343 8.248c.142.127.319.189.496.189.193 0 .386-.074.531-.221.28-.281.293-.732.028-1.028l-8.286-9.299 3.368-3.368c.215-.214.278-.537.163-.817-.116-.28-.39-.463-.692-.463l-3.64-.003-6.374-5.462v-2.589c0-.303-.183-.577-.463-.693zm6.072 10.063c.136.116.309.18.487.18l2.107.002-6.247 6.246v-2.103c0-.179-.064-.353-.181-.488l-5.876-6.848c-.143-.166-.351-.261-.569-.261h-1.117l4.287-4.287v1.124c0 .219.096.427.262.57z"
+     id="path2"
+     style="fill:#ffffff" />
+</svg>

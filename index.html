@@ -1,164 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js ar - hit test</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<link type="text/css" rel="stylesheet" href="main.css">
-	</head>
-	<body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unshift</title>
+  <link rel="icon" type="image/png" href="assets/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/menu.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <!-- .............. HEADER SECTION ...................-->
+  <header>
+    <div class="nav-buttons">
+      <div class="scroll-to-top">
+        <img src="assets/images/up.svg" alt="up icon">
+        <span>Scroll</span>
+      </div>
+      <div class="hamburger">
+        <div class="x">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html" class="logo"><img src="assets/images/logo.svg" alt="unshift logo"></a>
+      <ul class="nav-links">
+        <li><a href="#">PLAY</a></li>
+        <li><a href="#" class="active">ABOUT</a></li>
+        <li><a href="#">SIGNUP</a></li>
+        <a class="login" href="#">LOGIN</a>
+      </ul>
+    </nav>
+  </header>
 
+  <!-- .............. CONTENT ...................-->
+  
+  <main>
+    <canvas id="c"></canvas>
+    <section>
+      <!-- <h1>Let's Make</h1><h1>Games Worthwhile</h1> -->
+      <!-- <h1>Why Kill Time</h1><h1>This Quarantine</h1> -->
+      <h1>Why Games</h1><h1>That Don't Pay</h1>
+    </section>
+  </main>
+  
+  <div class="more">
+    <img src="assets/images/swipe.svg" alt="up icon">
+    <span>Scroll</span>
+    <!-- <span class="mobile">Swipe</span> -->
+  </div>
+  
+  <section class="intro">
+    <img src="./assets/images/compete.svg" alt="competition">
+  </section>
+  <section class="info">
+    <!-- <img src="./assets/favicon.svg" alt="competition" style="height: 100%;"> -->
+  </section>
 
-		<script type="module">
+  <!-- ...................FOOTER SECTION................ -->
+  <footer>
+    <div class="container">
+      <div class="footer-info">
+        <div class="moto">
+          <a href="#"><img class="motoimage" src="./assets/images/footer-logo.svg" alt=""></a>
+          <p>Making games fun and worthwhile. </p>
+          <p class="desktop">We at Unshift Inc believe that competition just makes games so much more fun, when there are prizes to be won.</p>
+        </div>
+  
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+        <div class="icons">
+          <a href="#"><img class="icon" src="./assets/images/github.svg" alt=""></a>
+          <a href="#"><img class="icon" src="./assets/images/instagram.svg" alt=""></a>
+          <a href="#"><img class="icon" src="./assets/images/gmail.svg" alt=""></a>
+        </div>
+      </div>
+      <div class="icons-mobile">
+        <a href="#"><img class="icon" src="./assets/images/github.svg" alt=""></a>
+        <a href="#"><img class="icon" src="./assets/images/instagram.svg" alt=""></a>
+        <a href="#"><img class="icon" src="./assets/images/gmail.svg" alt=""></a>
+      </div>
+    </div>
 
-			import * as THREE from './js/three/three.module.js';
-			import { ARButton } from './js/three/webxr/ARButton.js';
+    <!-- <a class="join" href="#">Join Us</a> -->
+    <div class="copy"><br>
+      <p>Copyright &#169;<b> unshift</b>, Inc 2020</p>
+    </div>
+    
+  </footer>
+  <!-- Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+  <!-- ...................SCRIPTS SECTION................ -->
 
-			let container;
-			let camera, scene, renderer;
-			let controller;
-
-			let reticle;
-
-			let hitTestSource = null;
-			let hitTestSourceRequested = false;
-
-			init();
-			animate();
-
-			function init() {
-
-				container = document.createElement( 'div' );
-				document.body.appendChild( container );
-
-				scene = new THREE.Scene();
-
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 20 );
-
-				const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
-				light.position.set( 0.5, 1, 0.25 );
-				scene.add( light );
-
-				//
-
-				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.xr.enabled = true;
-				container.appendChild( renderer.domElement );
-
-				//
-
-				document.body.appendChild( ARButton.createButton( renderer, { requiredFeatures: [ 'hit-test' ] } ) );
-
-				//
-
-				const geometry = new THREE.PlaneBufferGeometry( width = 0.75,height=0.5);
-
-				function onSelect() {
-
-					if ( reticle.visible ) {
-
-						const material = new THREE.MeshBasicMaterial( { color: 0x2AB05F } );
-						const mesh = new THREE.Mesh( geometry, material );
-						mesh.position.setFromMatrixPosition( reticle.matrix );
-						// mesh.scale.y = Math.random() * 2 + 1;
-						scene.add( mesh );
-
-					}
-
-				}
-
-				controller = renderer.xr.getController( 0 );
-				controller.addEventListener( 'select', onSelect );
-				scene.add( controller );
-
-				reticle = new THREE.Mesh(
-					new THREE.RingBufferGeometry( 0.15, 0.2, 32 ).rotateX( - Math.PI / 2 ),
-					new THREE.MeshBasicMaterial()
-				);
-				reticle.matrixAutoUpdate = false;
-				reticle.visible = false;
-				scene.add( reticle );
-
-				//
-
-				window.addEventListener( 'resize', onWindowResize, false );
-
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
-
-			//
-
-			function animate() {
-
-				renderer.setAnimationLoop( render );
-
-			}
-
-			function render( timestamp, frame ) {
-
-				if ( frame ) {
-
-					const referenceSpace = renderer.xr.getReferenceSpace();
-					const session = renderer.xr.getSession();
-
-					if ( hitTestSourceRequested === false ) {
-
-						session.requestReferenceSpace( 'viewer' ).then( function ( referenceSpace ) {
-
-							session.requestHitTestSource( { space: referenceSpace } ).then( function ( source ) {
-
-								hitTestSource = source;
-
-							} );
-
-						} );
-
-						session.addEventListener( 'end', function () {
-
-							hitTestSourceRequested = false;
-							hitTestSource = null;
-
-						} );
-
-						hitTestSourceRequested = true;
-
-					}
-
-					if ( hitTestSource ) {
-
-						const hitTestResults = frame.getHitTestResults( hitTestSource );
-
-						if ( hitTestResults.length ) {
-
-							const hit = hitTestResults[ 0 ];
-
-							reticle.visible = true;
-							reticle.matrix.fromArray( hit.getPose( referenceSpace ).transform.matrix );
-
-						} else {
-
-							reticle.visible = false;
-
-						}
-
-					}
-
-				}
-
-				renderer.render( scene, camera );
-
-			}
-
-		</script>
-	</body>
+  <script src="./js/menu.js"></script>
+  <!-- <script type="module" src="./js/3dmodel.js"></script> -->
+</body>
 </html>
