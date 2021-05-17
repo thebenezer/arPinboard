@@ -264,6 +264,7 @@ footer{
     display: none;
   }
   .trydemo{
+    z-index: 1;
     margin-top: 25%;
   }
 
