@@ -55,7 +55,8 @@
 
 				//
 
-				const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
+				// const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
+				const geometry = new THREE.PlaneBufferGeometry( width = 0.75,height=0.5);
 
 				function onSelect() {
 
@@ -64,7 +65,7 @@
 						const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						const mesh = new THREE.Mesh( geometry, material );
 						mesh.position.setFromMatrixPosition( reticle.matrix );
-						mesh.scale.y = Math.random() * 2 + 1;
+						// mesh.scale.y = Math.random() * 2 + 1;
 						scene.add( mesh );
 
 					}
